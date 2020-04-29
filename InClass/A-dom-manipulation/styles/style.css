@@ -151,6 +151,10 @@ body {
 	background: #87ca8a
 }
 
+.biggerA {
+	font-size: 1.5em!important;
+}
+
 @media screen and (min-width: 992px) {
 
 	.navbar-brand > img {
