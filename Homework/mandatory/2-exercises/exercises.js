@@ -15,6 +15,18 @@
  */
 function exerciseOne(arrayOfPeople) {
   let content = document.querySelector("#content");
+  var elh1, elh2;
+     
+  for (let i = 0; i < arrayOfPeople.length; i++) {
+    elh1 = document.createElement("h1");
+    elh2 = document.createElement("h2");
+
+    elh1.innerHTML = arrayOfPeople[i].name;
+    content.appendChild(elh1);
+
+    elh2.innerHTML = arrayOfPeople[i].job;
+    content.appendChild(elh2);  
+  }
 }
 
 /**
@@ -26,6 +38,18 @@ function exerciseOne(arrayOfPeople) {
  */
 function exerciseTwo(shopping) {
   //Write your code in here
+  var elul = document.createElement("ul");
+  var elli;
+
+  var content = document.querySelector("#content");
+  content.appendChild(elul);
+
+  for (let i = 0; i < shopping.length; i++) {
+    elli = document.createElement("li");
+    elli.innerHTML = shopping[i];
+
+    elul.appendChild(elli);
+  }
 }
 
 /**
@@ -59,6 +83,49 @@ function exerciseTwo(shopping) {
 **/
 function exerciseThree(books) {
   //Write your code in here
+  var ulBooksEl = document.createElement("ul");
+  ulBooksEl.style.display = "flex";
+  ulBooksEl.style.justifyContent = "space-around";
+  var contentEl = document.querySelector("#content");
+
+  var imglink1 = "https://www.adrionltd.com/87217-thickbox_default/the-design-of-everyday-things.jpg";
+  var imglink2 = "https://miro.medium.com/max/2892/1*XddVAHMSQ7LI48-odlQlUQ.jpeg";
+  var imglink3 = "https://stefano.chiodino.uk/images/41BKx1AxQWL.jpg";
+  
+  contentEl.appendChild(ulBooksEl);
+
+  for (let i = 0; i < books.length; i++) {
+    var liBookEl = document.createElement("li");
+    liBookEl.style.padding = "20px 10px 20px 10px";
+    
+    var bookTitle = document.createElement("p").innerHTML = books[i].title + " - " + books[i].author;
+    liBookEl.innerHTML = bookTitle;
+
+    var bookImg = document.createElement("img");
+    switch (i) {
+      case 0:
+        bookImg.src = imglink1;
+        break;
+
+      case 1:
+        bookImg.src = imglink2;
+        break;
+
+      default:
+        bookImg.src = imglink3;
+        break;
+    }
+    liBookEl.appendChild(bookImg);
+
+    if(books[i].alreadyRead===true){
+      liBookEl.className = "readBook";
+    } else {
+      liBookEl.className = "unreadBook";
+    }
+
+    ulBooksEl.appendChild(liBookEl);
+    
+  }
 }
 
 //
