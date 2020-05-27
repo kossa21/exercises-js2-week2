@@ -28,6 +28,53 @@ function changeColors(jumbotronColor, donateColor, volunteerColor, volunteerText
 /* ## Part 2 */
 /*-----------------*/
 
+function checkNonEmpty(input){
+  //This function will return true if the input is not empty
+  return input.value.length > 0;
+}
+
+function checkAt(input){
+  //This function will return true if the email input has the character "@"
+  return input.value.includes("@");
+}
+
+function checkEmail(input){
+  return checkNonEmpty(input) && checkAt(input);
+}
+
+function changeBackground(input, color){
+  input.style.borderColor = color;
+}
+
+function checkInputValid(input){
+  if(input.type === "email"){
+    if  (checkEmail(input) === false){
+      console.log("My email is not valid");
+      changeBackground(input, "red");
+    } else {
+      console.log("My email is valid");
+      changeBackground(input, "white")
+    }
+  } else {
+    if(checkNonEmpty(input) === false) 
+      changeBackground(input, "red"); 
+    else 
+      changeBackground(input, "white");
+  }
+}
+
+function addEvents(input){
+  input.addEventListener("input", checkInputValid.bind(this, input));
+}
+
+function validateFields(event){
+  const inputs = document.querySelectorAll(".form-control");
+
+  inputs.forEach(checkInputValid);
+  inputs.forEach(addEvents);
+
+  event.preventDefault();
+}
 
 
   
